@@ -40,6 +40,14 @@ class BaseElementTest {
                     "Hidden Button"
             ) {};
 
+            BaseElement missingButton = new BaseElement(
+                    engine.getPage(),
+                    "#missing",
+                    "Missing Button"
+            ) {};
+
+            assertFalse(missingButton.exists());
+
             System.out.println("Active Button: " + activeButton.getName() + ", Exists: " + activeButton.exists() + ", Visible: " + activeButton.isVisible() + ", Enabled: " + activeButton.isEnabled());
             System.out.println("Disabled Button: " + disabledButton.getName() + ", Exists: " + disabledButton.exists() + ", Visible: " + disabledButton.isVisible() + ", Enabled: " + disabledButton.isEnabled());
             System.out.println("Hidden Button: " + hiddenButton.getName() + ", Exists: " + hiddenButton.exists() + ", Visible: " + hiddenButton.isVisible() + ", Enabled: " + hiddenButton.isEnabled());
@@ -54,6 +62,10 @@ class BaseElementTest {
 
             assertTrue(hiddenButton.exists());
             assertFalse(hiddenButton.isVisible());
+
+            assertEquals("Active Button", activeButton.getName());
+            assertEquals("Disabled Button", disabledButton.getName());
+            assertEquals("Hidden Button", hiddenButton.getName());
         }
     }
 

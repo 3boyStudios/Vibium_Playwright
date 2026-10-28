@@ -40,7 +40,12 @@ public boolean exists() {
 
     @Override
     public void waitUntilVisible() {
-        locator.waitFor();
+        locator.waitFor(
+                new Locator.WaitForOptions()
+                        .setState(
+                                com.microsoft.playwright.options.WaitForSelectorState.VISIBLE
+                        )
+        );
     }
 
     @Override
